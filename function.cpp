@@ -8,6 +8,28 @@
 
 #include "function.h"
 
+int customMin(int a, int b)
+{
+    /*********************************************
+    * customMin: Returns the minimum of two integers.
+    * @param a : first integer
+    * @param b : second integer
+    * @return : minimum of a and b
+    *********************************************/
+    return (a < b) ? a : b;
+}
+
+int customMax(int a, int b)
+{
+    /*********************************************
+    * customMax: Returns the maximum of two integers.
+    * @param a : first integer
+    * @param b : second integer
+    * @return : maximum of a and b
+    *********************************************/    
+    return (a > b) ? a : b;
+}
+
 void insertionSort(vector<int>& arr, int start, int end)
 {
     /*********************************************
@@ -39,8 +61,8 @@ void merge(vector<int>& arr, int start, int mid, int end)
     * @param end : ending index of the second subarray
     *********************************************/    
     int len1 = mid - start + 1, len2 = end - mid;
-    vector<int> left(arr.begin() + start, arr.begin() + mid + 1 );
-    vector<int> right( (arr.begin() + mid + 1), (arr.begin() + end + 1) );
+    vector<int> left(arr.begin() + start, arr.begin() + mid + 1);
+    vector<int> right(arr.begin() + mid + 1, arr.begin() + end + 1);
 
     int i = 0;
     int j = 0;
@@ -69,7 +91,7 @@ void merge(vector<int>& arr, int start, int mid, int end)
         k++;
     }
 
-    //copy remaining elements of right, if any
+    // copy remaining elements of right, if any
     while (j < len2)
     {
         arr[k] = right[j];
@@ -85,22 +107,22 @@ void tSort(vector<int>& arr, int n)
     * @param arr : reference to the array to sort
     * @param n : size of the array
     *********************************************/
-    //determine the minimum run size based on array length 
-    int minRun = std::max(32, int(std::log2(n)) + 1); //calculation for dynamic run length
+    // Determine the minimum run size based on array length 
+    int minRun = customMax(32, int(std::log2(n)) + 1); // Calculation for dynamic run length
 
-    //sort individual subarrays of size RUN or dynamically determined minRun
-    for (int i = 0; i < n; i += (minRun) )
+    // Sort individual subarrays of size RUN or dynamically determined minRun
+    for (int i = 0; i < n; i += minRun)
     {
-        insertionSort(arr, i, std::min( i + minRun - 1, n - 1));
+        insertionSort(arr, i, customMin(i + minRun - 1, n - 1));
     }
-    // start merging from size minRun. merge
-    //to form size 64, then 128, 256 and so on..
-    for (int size = minRun; size < n; size = (2 * size))
+
+    // Start merging from size minRun. Merge to form size 64, then 128, 256 and so on...
+    for (int size = minRun; size < n; size = 2 * size)
     {
-        for (int start = 0; start < n; start += (2 * size))
+        for (int start = 0; start < n; start += 2 * size)
         {
-            int mid = (start + (size - 1));
-            int end = std::min(( (start + 2) * (size - 1) ), (n - 1));
+            int mid = start + size - 1;
+            int end = customMin(start + 2 * size - 1, n - 1);
 
             if (mid < end)
             {
@@ -138,4 +160,3 @@ int random_range(int min, int max)
     }
     return (rand() % (max - min + 1)) + min;
 }
-
