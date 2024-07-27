@@ -1,12 +1,12 @@
 # Ignore all .o files
-*.o
+#*.o
 
 # Ignore editor files
-*.swp
-*.swo
+#*.swp
+#*.swo
 
 # Ignore system files
-.DS_Store
+#.DS_Store
 
 # Ignore build directories
-/build
+#/build
