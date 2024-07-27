@@ -8,6 +8,21 @@
 
 #include "function.h"
 
+
+
+bool compareVectors(const std::vector<int>& v1, const std::vector<int>& v2)
+{
+    /*********************************************
+    * compareVectors: Function to compare two vectors of integers.
+    * This function checks if two vectors are equal.
+    *
+    * @param v1 : const reference to the first vector of integers
+    * @param v2 : const reference to the second vector of integers
+    * @return : true if the vectors are equal, false otherwise
+    *********************************************/
+    return v1 == v2;
+}
+
 int random_range(int min, int max)
 {
     /*********************************************
