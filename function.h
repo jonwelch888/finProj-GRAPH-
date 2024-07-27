@@ -6,6 +6,7 @@
 * @note This file is associated with [function.cpp], & [main.cpp];
 ****************************************************/
 
+#include <stdexcept>
 #include <stdlib.h> /* rand */
 
 #ifndef FUNCTION_H
