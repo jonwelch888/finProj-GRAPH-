@@ -34,7 +34,7 @@ int random_range(int min, int max)
     *********************************************/
     if (min > max)
     {
-        throw std::invalid_argument("min cannot be greater than max");
+        throw invalid_argument("min cannot be greater than max");
     }
     return (rand() % (max - min + 1)) + min;
 }
