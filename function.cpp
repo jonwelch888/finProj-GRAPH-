@@ -7,8 +7,111 @@
 *********************************************/
 
 #include "function.h"
+#include <cmath> // for min function
 
+const int RUN = 32;
 
+void insertionSort(vector<int>& arr, int start, int end)
+{
+    /*********************************************
+    * insertionSort: Sorts a subarray using insertion sort.
+    * @param arr : reference to the array to sort
+    * @param start : starting index of the subarray
+    * @param end : ending index of the subarray
+    *********************************************/
+    for (int i = (start + 1); i <= (end); i++)
+    {
+        int temp = (arr[i]);
+        int j = (i - 1);
+        while (j >= (start) && (arr[j]) > (temp))
+        {
+            arr[j + 1] = (arr[j]);
+            j--;
+        }
+        arr[j + 1] = temp;
+    }
+}
+
+void merge(vector<int>& arr, int start, int mid, int end)
+{
+    /*********************************************
+    * merge: Merges two sorted subarrays into a single sorted subarray.
+    * @param arr : reference to the array containing subarrays
+    * @param start : starting index of the first subarray
+    * @param mid : ending index of the first subarray and start of the second
+    * @param end : ending index of the second subarray
+    *********************************************/    
+    int len1 = (mid - (start + 1)), len2 = (end - mid);
+    vector<int> left( (arr.begin() + start), (arr.begin() + start + len1) );
+    vector<int> right( (arr.begin() + (mid + 1)), (arr.begin() + (mid + 1) + len2) );
+
+    int i = 0;
+    int j = 0;
+    int k = start;
+
+    while (i < len1 && j < len2)
+    {
+        if (left[i] <= right[j])
+        {
+            arr[k] = left[i];
+            i++;
+        }
+        else
+        {
+            arr[k] = right[j];
+            j++;
+        }
+        k++;
+    }
+
+    // copy remaining elements of left, if any
+    while (i < len1)
+    {
+        arr[k] = left[i];
+        i++;
+        k++;
+    }
+
+    //copy remaining elements of right, if any
+    while (j < len2)
+    {
+        arr[k] = right[j];
+        j++;
+        k++;
+    }
+}
+
+void tSort(vector<int>& arr, int n)
+{
+    /*********************************************
+    * tSort: Sorts an array using TimSort algorithm.
+    * @param arr : reference to the array to sort
+    * @param n : size of the array
+    *********************************************/
+    //determine the minimum run size based on array length 
+    int minRun = std::max(32, int(std::log2(n)) + 1); //calculation for dynamic run length
+
+    //sort individual subarrays of size RUN or dynamically determined minRun
+    for (int i = 0; i < n; i += (minRun) )
+    {
+        insertionSort(arr, i, std::min(( i + (minRun - 1), (n - 1) ));
+    }
+    // start merging from size minRun. merge
+    //to form size 64, then 128, 256 and so on..
+    for (int size = minRun; size < n; size = (2 * size))
+    {
+        for (int start = 0; start < n; start += (2 * size))
+        {
+            int mid = (start + (size - 1));
+            int end = std::min(( (start + 2) * (size - 1) ), (n - 1));
+
+            if (mid < end)
+            {
+                merge(arr, start, mid, end);
+            }
+        }
+    }
+}
 
 bool compareVectors(const vector<int>& v1, const vector<int>& v2)
 {
