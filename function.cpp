@@ -10,7 +10,7 @@
 
 
 
-bool compareVectors(const std::vector<int>& v1, const std::vector<int>& v2)
+bool compareVectors(const vector<int>& v1, const vector<int>& v2)
 {
     /*********************************************
     * compareVectors: Function to compare two vectors of integers.
