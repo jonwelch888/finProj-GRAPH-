@@ -11,10 +11,20 @@
 #include <vector>
 #include <algorithm>
 
+using std::vector;
+using std::string;
+using std::stack;
+using std::queue;
+using std::cout;
+using std::endl;
+
+
+
+
 #ifndef FUNCTION_H
 #define FUNCTION_H
 
-bool compareVectors(const std::vector<int>&, const std::vector<int>&);
+bool compareVectors(const vector<int>&, const vector<int>&);
 
 int random_range(int, int);
 
