@@ -42,7 +42,7 @@ class Node
     private:
     int id;
     string data;
-    vector<int> neighbors; //good
+    vector<int> neighbors; 
     
     public:
     /**********************
