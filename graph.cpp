@@ -186,34 +186,40 @@ bool Graph::hasCycle()
     return hasCycle;
 }
 
-void Graph::dfs(int startId, std::vector<int>& order)
+
+void Graph::dfs(int startId, vector<int>& order)
 {
     /*********************************************
-    * dfs: Performs a depth-first search starting from the given node id.
-    * @param startId : id of the starting node
-    * @param order : reference to a vector where the order of visited nodes will be stored
-    *********************************************/
+    dfs: Performs a depth-first search starting from the given node id.
+    This function traverses the graph using DFS and stores the order of visited nodes.
+
+    @param startId : id of the starting node
+    @param order : reference to a vector where the order of visited nodes will be stored
+    *********************************************/    
     if (nodes.find(startId) == nodes.end())
     {
         return;
     }
-    
     unordered_set<int> visited;
     stack<int> stack;
     stack.push(startId);
-    
+
     while (!stack.empty())
     {
         int nodeId = stack.top();
         stack.pop();
-        
+
         if (visited.find(nodeId) == visited.end())
         {
             visited.insert(nodeId);
-            order.push_back(nodeId); //store order
+            order.push_back(nodeId);
             cout << "Visited node " << nodeId << endl;
-            
-            for (int neighborId : nodes[nodeId]->getNeighbors())
+
+            //neighbors and sort them using tSort
+            vector<int> neighbors = nodes[nodeId]->getNeighbors();
+            tSort(neighbors, neighbors.size());
+
+            for (int neighborId : neighbors)
             {
                 if (visited.find(neighborId) == visited.end())
                 {
@@ -224,12 +230,13 @@ void Graph::dfs(int startId, std::vector<int>& order)
     }
 }
 
-void Graph::bfs(int startId, std::vector<int>& order)
+
+void Graph::bfs(int startId, vector<int>& order)
 {
     /*********************************************
-    * bfs: Performs a breadth-first search starting from the given node id.
-    * @param startId : id of the starting node
-    * @param order : reference to a vector where the order of visited nodes will be stored
+    bfs: Performs a breadth-first search starting from the given node id.
+    @param startId : id of the starting node
+    @param order : reference to a vector where the order of visited nodes will be stored
     *********************************************/
     if (nodes.find(startId) == nodes.end())
     {
