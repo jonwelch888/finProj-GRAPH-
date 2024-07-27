@@ -15,8 +15,12 @@ int random_range(int min, int max)
     * @param min : minimum value of the range
     * @param max : maximum value of the range
     * @return : random integer within the range [min, max]
+    * @throws : std::invalid_argument if min is greater than max
     *********************************************/
+    if (min > max)
+    {
+        throw std::invalid_argument("min cannot be greater than max");
+    }
     return (rand() % (max - min + 1)) + min;
 }
-
 
