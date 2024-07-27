@@ -8,6 +8,7 @@
 #ifndef FUNCTION_H
 #define FUNCTION_H
 
+#include <cmath> // for log function
 #include <stdexcept>
 #include <stdlib.h> /* rand */
 #include <vector>
@@ -15,6 +16,8 @@
 const int RUN = 32; // for tSort() natural runs; 
 
 using std::vector;
+
+int customMin(int, int)
 
 void insertionSort(vector<int>&, int, int);
 void merge(vector<int>&, int, int, int);
