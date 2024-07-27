@@ -7,7 +7,7 @@
 * @note This file is associated with [main.h]
 ***********************************************/
 
-//[==================================================================================$$$======[ BACKTEST: (1) ]======$$$=====]
+//[========Additional Testing for Edge Cases for BT2;==BT1[success]=============$$$======[ BACKTEST: (2) ]======$$$=====]
 
 #include "main.h"
 
@@ -108,6 +108,43 @@ int main()
     graph.bfs(1);
 
     cout << endl;
+
+    /*********************************************
+    * Additional Testing for Edge Cases
+    *********************************************/
+    cout << "Testing Edge Cases" << endl;
+    cout << "==============================================" << endl;
+
+
+    //testing self-loop
+    cout << "Testing self-loop on node 1" << endl;
+    try 
+    {
+        graph.addEdge(1, 1);
+        cout << "Added self-loop on node 1" << endl;
+    } 
+    catch (const std::invalid_argument& e) 
+    {
+        cout << "Error: " << e.what() << endl;
+    }
+
+    // testing disconnected node
+    cout << "Testing disconnected node" << endl;
+    graph.addNode(8, "Node 8");
+    Node* node8 = graph.getNode(8);
+    assert(node8 != nullptr);
+    cout << "Added and retrieved disconnected node " << node8->getId() << " with data: " << node8->getData() << endl;
+
+    // Testing edge between non-existent nodes 9 and 10
+    cout << "Testing edge between non-existent nodes 9 and 10" << endl;
+    try 
+    {
+        graph.addEdge(9, 10);
+    } 
+    catch (const std::invalid_argument& e) 
+    {
+        cout << "Error: " << e.what() << endl;
+    }
 
     return 0;
 }
