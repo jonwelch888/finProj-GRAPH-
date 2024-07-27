@@ -9,8 +9,6 @@
 #include "function.h"
 #include <cmath> // for min function
 
-const int RUN = 32;
-
 void insertionSort(vector<int>& arr, int start, int end)
 {
     /*********************************************
