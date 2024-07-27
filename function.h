@@ -12,6 +12,8 @@
 #include <stdlib.h> /* rand */
 #include <vector>
 
+const int RUN = 32; // for tSort() natural runs; 
+
 using std::vector;
 
 void insertionSort(vector<int>&, int, int);
