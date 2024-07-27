@@ -11,12 +11,14 @@
 #include <stdexcept>
 #include <stdlib.h> /* rand */
 #include <vector>
-#include <algorithm>
 
 using std::vector;
 
-bool compareVectors(const vector<int>&, const vector<int>&);
+void insertionSort(vector<int>&, int, int);
+void merge(vector<int>&, int, int, int);
+void tSort(vector<int>&, int);
 
+bool compareVectors(const vector<int>&, const vector<int>&);
 int random_range(int, int);
 
 #endif //FUNCTION_H
