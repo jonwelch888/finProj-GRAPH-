@@ -101,12 +101,14 @@ void Graph::addEdge(int id1, int id2)
     * addEdge: Adds an edge between two nodes in the graph.
     * @param id1 : id of the first node
     * @param id2 : id of the second node
+    * @throws : std::invalid_argument if either id1 or id2 does not exist
     *********************************************/
-    if (nodes.find(id1) != nodes.end() && nodes.find(id2) != nodes.end())
+    if (nodes.find(id1) == nodes.end() || nodes.find(id2) == nodes.end())
     {
-        nodes[id1]->addNeighbor(id2);
-        nodes[id2]->addNeighbor(id1);
+        throw std::invalid_argument("One or both node ids do not exist");
     }
+    nodes[id1]->addNeighbor(id2);
+    nodes[id2]->addNeighbor(id1);
 }
 
 Node* Graph::getNode(int id)
