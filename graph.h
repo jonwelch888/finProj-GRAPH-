@@ -101,8 +101,9 @@ class Graph
     Helper Methods
     ***********************/
     bool hasCycle();
-    void dfs(int);
-    void bfs(int);
+    void dfs(int, vector<int>&);
+    void bfs(int, vector<int>&);
+
 };
 
 #endif // GRAPH_H
