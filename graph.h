@@ -48,6 +48,7 @@ class Node
     Constructors/Destructor
     ***********************/
     Node(int, const string&);
+    ~Node();
 
     /**********************
     Getters/Accessors
