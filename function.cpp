@@ -1,7 +1,7 @@
 /*********************************************
 * Name: Jon Welch
 * Assignment: Final Project
-* Purpose of the file: This source file contains the implementation of the random_range function.
+* Purpose of the file: This source file contains the implementation of extra helper functions.
 * 
 * @note This file is associated with [function.h]
 *********************************************/
