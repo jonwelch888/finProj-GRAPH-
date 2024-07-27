@@ -20,6 +20,14 @@ Node::Node(int id, const string& data) : id(id), data(data)
     *********************************************/
 }
 
+Node::~Node()
+{
+    /*********************************************
+    * Destructor for Node class.
+    * Currently no dynamic memory to clean up.
+    *********************************************/
+}
+
 int Node::getId() const
 {
     /*********************************************
