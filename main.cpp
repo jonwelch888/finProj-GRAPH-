@@ -101,7 +101,7 @@ int main()
     cout << "==============================================" << endl;
 
     cout << "Performing DFS starting from node 1:" << endl;
-    vector<int> expectedDfsOrder = {1, 2, 4, 7, 5, 3, 6}; // Update this based on your actual expected order
+    vector<int> expectedDfsOrder = {1, 2, 4, 7, 5, 3, 6}; // Update based on actual expected order
     vector<int> actualDfsOrder;
     graph.dfs(1, actualDfsOrder);
     cout << "Expected DFS order: ";
@@ -116,7 +116,7 @@ int main()
     cout << endl;
 
     cout << "Performing BFS starting from node 1:" << endl;
-    vector<int> expectedBfsOrder = {1, 2, 3, 4, 5, 6, 7}; // Update this based on your actual expected order
+    vector<int> expectedBfsOrder = {1, 2, 3, 4, 5, 6, 7}; // Update based on actual expected order
     vector<int> actualBfsOrder;
     graph.bfs(1, actualBfsOrder);
     cout << "Expected BFS order: ";
