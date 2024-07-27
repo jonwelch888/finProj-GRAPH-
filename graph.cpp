@@ -186,11 +186,12 @@ bool Graph::hasCycle()
     return hasCycle;
 }
 
-void Graph::dfs(int startId)
+void Graph::dfs(int startId, std::vector<int>& order)
 {
     /*********************************************
     * dfs: Performs a depth-first search starting from the given node id.
     * @param startId : id of the starting node
+    * @param order : reference to a vector where the order of visited nodes will be stored
     *********************************************/
     if (nodes.find(startId) == nodes.end())
     {
@@ -209,6 +210,7 @@ void Graph::dfs(int startId)
         if (visited.find(nodeId) == visited.end())
         {
             visited.insert(nodeId);
+            order.push_back(nodeId); //store order
             cout << "Visited node " << nodeId << endl;
             
             for (int neighborId : nodes[nodeId]->getNeighbors())
@@ -222,11 +224,12 @@ void Graph::dfs(int startId)
     }
 }
 
-void Graph::bfs(int startId)
+void Graph::bfs(int startId, std::vector<int>& order)
 {
     /*********************************************
     * bfs: Performs a breadth-first search starting from the given node id.
     * @param startId : id of the starting node
+    * @param order : reference to a vector where the order of visited nodes will be stored
     *********************************************/
     if (nodes.find(startId) == nodes.end())
     {
@@ -245,6 +248,7 @@ void Graph::bfs(int startId)
         if (visited.find(nodeId) == visited.end())
         {
             visited.insert(nodeId);
+            order.push_back(nodeId); // sstore order
             cout << "Visited node " << nodeId << endl;
             
             for (int neighborId : nodes[nodeId]->getNeighbors())
