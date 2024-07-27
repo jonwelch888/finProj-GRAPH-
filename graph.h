@@ -18,6 +18,7 @@
 #include <unordered_set>
 #include <string>
 #include <stdexcept>
+#include "function.h"
 
 using std::vector;
 using std::unordered_map;
