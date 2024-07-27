@@ -13,12 +13,6 @@
 
 using std::vector;
 
-
-
-
-
-
-
 #ifndef FUNCTION_H
 #define FUNCTION_H
 
