@@ -6,6 +6,21 @@
 * @note This file is associated with [function.cpp], & [main.cpp];
 ****************************************************/
 
+
+
+
+//=======================================================================THIS!!!
+//!!!!!!!!!!!!
+//[---------- COME BAKC TO THIS -------------]
+// #include <cstdlib> // ???????
+//[----------------------------------------]
+// , OR #include <stdlib.h> /* rand */???????
+
+
+
+
+#include <stdlib.h> /* rand */
+
 #ifndef RANDOM_RANGE_H
 #define RANDOM_RANGE_H
 
