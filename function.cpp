@@ -41,9 +41,9 @@ void merge(vector<int>& arr, int start, int mid, int end)
     * @param mid : ending index of the first subarray and start of the second
     * @param end : ending index of the second subarray
     *********************************************/    
-    int len1 = (mid - (start + 1)), len2 = (end - mid);
-    vector<int> left( (arr.begin() + start), (arr.begin() + start + len1) );
-    vector<int> right( (arr.begin() + (mid + 1)), (arr.begin() + (mid + 1) + len2) );
+    int len1 = mid - start + 1, len2 = end - mid;
+    vector<int> left(arr.begin() + start, arr.begin() + mid + 1 );
+    vector<int> right( (arr.begin() + mid + 1), (arr.begin() + end + 1) );
 
     int i = 0;
     int j = 0;
@@ -94,7 +94,7 @@ void tSort(vector<int>& arr, int n)
     //sort individual subarrays of size RUN or dynamically determined minRun
     for (int i = 0; i < n; i += (minRun) )
     {
-        insertionSort(arr, i, std::min(( i + (minRun - 1), (n - 1) ));
+        insertionSort(arr, i, std::min( i + minRun - 1, n - 1));
     }
     // start merging from size minRun. merge
     //to form size 64, then 128, 256 and so on..
