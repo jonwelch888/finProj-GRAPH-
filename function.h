@@ -15,8 +15,6 @@
 
 using std::vector;
 
-
-
 bool compareVectors(const vector<int>&, const vector<int>&);
 
 int random_range(int, int);
