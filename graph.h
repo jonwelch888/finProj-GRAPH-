@@ -17,6 +17,7 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <string>
+#include <stdexcept>
 
 using std::vector;
 using std::unordered_map;
