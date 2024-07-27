@@ -100,12 +100,32 @@ int main()
     cout << "==============================================" << endl;
 
     cout << "Performing DFS starting from node 1:" << endl;
-    graph.dfs(1);
+    vector<int> expectedDfsOrder = {1, 2, 4, 7, 5, 3, 6}; // Update this based on your actual expected order
+    vector<int> actualDfsOrder;
+    graph.dfs(1, actualDfsOrder);
+    cout << "Expected DFS order: ";
+    for (int id : expectedDfsOrder) cout << id << " ";
+    cout << endl;
+    cout << "Actual DFS order: ";
+    for (int id : actualDfsOrder) cout << id << " ";
+    cout << endl;
+    assert(compareVectors(expectedDfsOrder, actualDfsOrder));
+    cout << "DFS order is correct." << endl;
 
     cout << endl;
 
     cout << "Performing BFS starting from node 1:" << endl;
-    graph.bfs(1);
+    vector<int> expectedBfsOrder = {1, 2, 3, 4, 5, 6, 7}; // Update this based on your actual expected order
+    vector<int> actualBfsOrder;
+    graph.bfs(1, actualBfsOrder);
+    cout << "Expected BFS order: ";
+    for (int id : expectedBfsOrder) cout << id << " ";
+    cout << endl;
+    cout << "Actual BFS order: ";
+    for (int id : actualBfsOrder) cout << id << " ";
+    cout << endl;
+    assert(compareVectors(expectedBfsOrder, actualBfsOrder));
+    cout << "BFS order is correct." << endl;
 
     cout << endl;
 
@@ -115,8 +135,7 @@ int main()
     cout << "Testing Edge Cases" << endl;
     cout << "==============================================" << endl;
 
-
-    //testing self-loop
+    // Testing self-loop
     cout << "Testing self-loop on node 1" << endl;
     try 
     {
@@ -128,7 +147,7 @@ int main()
         cout << "Error: " << e.what() << endl;
     }
 
-    // testing disconnected node
+    // Testing disconnected node
     cout << "Testing disconnected node" << endl;
     graph.addNode(8, "Node 8");
     Node* node8 = graph.getNode(8);
