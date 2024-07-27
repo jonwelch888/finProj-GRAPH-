@@ -24,10 +24,7 @@ int main()
     *********************************************/
     
     srand(static_cast<unsigned int>(time(0)));
-
-    /*********************************************
-    * Create and display graph
-    *********************************************/
+    
     Graph graph;
     cout << endl << "Graph created" << endl << endl;
 
