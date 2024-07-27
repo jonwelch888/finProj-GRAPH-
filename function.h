@@ -5,6 +5,8 @@
 * 
 * @note This file is associated with [function.cpp], & [main.cpp];
 ****************************************************/
+#ifndef FUNCTION_H
+#define FUNCTION_H
 
 #include <stdexcept>
 #include <stdlib.h> /* rand */
@@ -13,8 +15,7 @@
 
 using std::vector;
 
-#ifndef FUNCTION_H
-#define FUNCTION_H
+
 
 bool compareVectors(const vector<int>&, const vector<int>&);
 
