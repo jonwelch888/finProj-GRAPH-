@@ -7,7 +7,6 @@
 *********************************************/
 
 #include "function.h"
-#include <cmath> // for min function
 
 void insertionSort(vector<int>& arr, int start, int end)
 {
