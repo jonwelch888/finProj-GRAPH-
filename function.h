@@ -6,24 +6,11 @@
 * @note This file is associated with [function.cpp], & [main.cpp];
 ****************************************************/
 
-
-
-
-//=======================================================================THIS!!!
-//!!!!!!!!!!!!
-//[---------- COME BAKC TO THIS -------------]
-// #include <cstdlib> // ???????
-//[----------------------------------------]
-// , OR #include <stdlib.h> /* rand */???????
-
-
-
-
 #include <stdlib.h> /* rand */
 
-#ifndef RANDOM_RANGE_H
-#define RANDOM_RANGE_H
+#ifndef FUNCTION_H
+#define FUNCTION_H
 
 int random_range(int, int);
 
-#endif // RANDOM_RANGE_H
+#endif //FUNCTION_H
