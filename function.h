@@ -24,7 +24,7 @@ void insertionSort(vector<int>&, int, int);
 void merge(vector<int>&, int, int, int);
 void tSort(vector<int>&, int);
 
-bool compareVectors(const vector<int>&, const vector<int>&);
+bool compareVec(const vector<int>&, const vector<int>&);
 int random_range(int, int);
 
 #endif //FUNCTION_H
