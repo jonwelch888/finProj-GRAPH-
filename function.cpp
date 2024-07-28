@@ -132,7 +132,7 @@ void tSort(vector<int>& arr, int n)
     }
 }
 
-bool compareVectors(const vector<int>& v1, const vector<int>& v2)
+bool compareVec(const vector<int>& v1, const vector<int>& v2)
 {
     /*********************************************
     * compareVectors: Function to compare two vectors of integers.
@@ -144,6 +144,32 @@ bool compareVectors(const vector<int>& v1, const vector<int>& v2)
     *********************************************/
     return v1 == v2;
 }
+bool compareVec(const vector<int>& v1, const vector<int>& v2)
+{
+    /*********************************************
+    compareVec: Compares two vectors for equality.
+    @param v1 : first vector
+    @param v2 : second vector
+    @return : true if vectors are equal, false otherwise
+    @Note : [return XYZ ? true : false; OR(^), return XYZ ? A : B ? : C;]
+    *********************************************/
+    
+     bool flag = (v1.size() != v2.size()) ? false : true;
+     
+    if (flag==true)
+    {
+        for (size_t i = 0; i < v1.size(); ++i)
+        {
+            if (v1[i] != v2[i])
+            {
+                flag = false;
+            }
+        }
+    }
+    return flag;
+}
+
+
 
 int random_range(int min, int max)
 {
