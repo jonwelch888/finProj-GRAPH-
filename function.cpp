@@ -140,7 +140,7 @@ bool compareVec(const vector<int>& v1, const vector<int>& v2)
     @return : true if vectors are equal, false otherwise
     @note : [return XYZ ? true : false; OR(^), return XYZ ? A : B ? : C;]
     *********************************************/
-    bool flag = (v1.size() != v2.size()) ? -1 : true;
+    bool flag = (v1.size() != v2.size()) ? false : true;
      
     if (flag==true)
     {
@@ -148,7 +148,7 @@ bool compareVec(const vector<int>& v1, const vector<int>& v2)
         {
             if (v1[i] != v2[i])
             {
-                flag = -1;
+                flag = false;
             }
         }
     }
