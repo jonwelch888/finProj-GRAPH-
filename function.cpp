@@ -2,7 +2,6 @@
 * Name: Jon Welch
 * Assignment: Final Project
 * Purpose of the file: This source file contains the implementation of extra helper functions.
-* 
 * @note This file is associated with [function.h]
 *********************************************/
 
@@ -11,10 +10,10 @@
 int customMin(int a, int b)
 {
     /*********************************************
-    * customMin: Returns the minimum of two integers.
-    * @param a : first integer
-    * @param b : second integer
-    * @return : minimum of a and b
+    customMin: Returns the minimum of two integers.
+    @param a : first integer
+    @param b : second integer
+    @return : minimum of a and b
     *********************************************/
     return (a < b) ? a : b;
 }
@@ -22,10 +21,10 @@ int customMin(int a, int b)
 int customMax(int a, int b)
 {
     /*********************************************
-    * customMax: Returns the maximum of two integers.
-    * @param a : first integer
-    * @param b : second integer
-    * @return : maximum of a and b
+    customMax: Returns the maximum of two integers.
+    @param a : first integer
+    @param b : second integer
+    @return : maximum of a and b
     *********************************************/    
     return (a > b) ? a : b;
 }
@@ -33,10 +32,10 @@ int customMax(int a, int b)
 void insertionSort(vector<int>& arr, int start, int end)
 {
     /*********************************************
-    * insertionSort: Sorts a subarray using insertion sort.
-    * @param arr : reference to the array to sort
-    * @param start : starting index of the subarray
-    * @param end : ending index of the subarray
+    insertionSort: Sorts a subarray using insertion sort.
+    @param arr : reference to the array to sort
+    @param start : starting index of the subarray
+    @param end : ending index of the subarray
     *********************************************/
     for (int i = (start + 1); i <= (end); i++)
     {
@@ -54,11 +53,11 @@ void insertionSort(vector<int>& arr, int start, int end)
 void merge(vector<int>& arr, int start, int mid, int end)
 {
     /*********************************************
-    * merge: Merges two sorted subarrays into a single sorted subarray.
-    * @param arr : reference to the array containing subarrays
-    * @param start : starting index of the first subarray
-    * @param mid : ending index of the first subarray and start of the second
-    * @param end : ending index of the second subarray
+    merge: Merges two sorted subarrays into a single sorted subarray.
+    @param arr : reference to the array containing subarrays
+    @param start : starting index of the first subarray
+    @param mid : ending index of the first subarray and start of the second
+    @param end : ending index of the second subarray
     *********************************************/    
     int len1 = mid - start + 1, len2 = end - mid;
     vector<int> left(arr.begin() + start, arr.begin() + mid + 1);
@@ -103,9 +102,9 @@ void merge(vector<int>& arr, int start, int mid, int end)
 void tSort(vector<int>& arr, int n)
 {
     /*********************************************
-    * tSort: Sorts an array using TimSort algorithm.
-    * @param arr : reference to the array to sort
-    * @param n : size of the array
+    tSort: Sorts an array using TimSort algorithm.
+    @param arr : reference to the array to sort
+    @param n : size of the array
     *********************************************/
     // Determine the minimum run size based on array length 
     int minRun = customMax(32, int(std::log2(n)) + 1); // Calculation for dynamic run length
@@ -132,18 +131,6 @@ void tSort(vector<int>& arr, int n)
     }
 }
 
-bool compareVec(const vector<int>& v1, const vector<int>& v2)
-{
-    /*********************************************
-    * compareVectors: Function to compare two vectors of integers.
-    * This function checks if two vectors are equal.
-    *
-    * @param v1 : const reference to the first vector of integers
-    * @param v2 : const reference to the second vector of integers
-    * @return : true if the vectors are equal, false otherwise
-    *********************************************/
-    return v1 == v2;
-}
 bool compareVec(const vector<int>& v1, const vector<int>& v2)
 {
     /*********************************************
@@ -174,11 +161,11 @@ bool compareVec(const vector<int>& v1, const vector<int>& v2)
 int random_range(int min, int max)
 {
     /*********************************************
-    * random_range: Function to generate a random integer within a specified range.
-    * @param min : minimum value of the range
-    * @param max : maximum value of the range
-    * @return : random integer within the range [min, max]
-    * @throws : std::invalid_argument if min is greater than max
+    random_range: Function to generate a random integer within a specified range.
+    @param min : minimum value of the range
+    @param max : maximum value of the range
+    @return : random integer within the range [min, max]
+    @throws : std::invalid_argument if min is greater than max
     *********************************************/
     if (min > max)
     {
