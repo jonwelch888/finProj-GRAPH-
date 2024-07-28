@@ -218,7 +218,7 @@ void Graph::dfs(int startId, vector<int>& order)
             //neighbors and sort them using tSort
             vector<int> neighbors = nodes[nodeId]->getNeighbors();
             tSort(neighbors, neighbors.size());
-
+            //push neighbors onto the stack in reverse order
             for (auto it = neighbor.rbegin(); it != neighbors.rend(); ++it)
             {
                 if (visited.find(*it) == visited.end())
