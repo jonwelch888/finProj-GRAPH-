@@ -14,6 +14,8 @@
 #include <iostream>
 #include <ctime>
 #include <cassert>
+#include <stdexcept>
+
 
 #endif // MAIN_H
 
