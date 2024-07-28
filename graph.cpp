@@ -255,10 +255,14 @@ void Graph::bfs(int startId, vector<int>& order)
         if (visited.find(nodeId) == visited.end())
         {
             visited.insert(nodeId);
-            order.push_back(nodeId); // sstore order
+            order.push_back(nodeId); //store order
             cout << "Visited node " << nodeId << endl;
             
-            for (int neighborId : nodes[nodeId]->getNeighbors())
+            //sort neighbors to ensure const order
+            vector<int> neighbors = nodes[nodeId]->getNeighbors(); 
+            tSort(neighbors, neighbors.size()); 
+            
+            for (int neighborId : neighbors)
             {
                 if (visited.find(neighborId) == visited.end())
                 {
