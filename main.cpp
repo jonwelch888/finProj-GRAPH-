@@ -7,8 +7,8 @@
 * @note This file is associated with [main.h]
 ***********************************************/
 
-//[========Additional Testing for graph traversal for BT3;==BT2[success]=============$$$======[ BACKTEST: (3) ]======$$$=====]
-//something aint gonna work, i can feel it; 
+//[========Additional Testing for graph traversal for BT4;==BT3[!success]=============$$$======[ BACKTEST: (4) ]======$$$=====]
+//something aint gonna work, i can feel it;[yerrp] 
 
 #include "main.h"
 
@@ -110,7 +110,7 @@ int main()
     cout << "Actual DFS order: ";
     for (int id : actualDfsOrder) cout << id << " ";
     cout << endl;
-    assert(compareVectors(expectedDfsOrder, actualDfsOrder));
+    assert(compareVec(expectedDfsOrder, actualDfsOrder));
     cout << "DFS order is correct." << endl;
 
     cout << endl;
@@ -125,7 +125,7 @@ int main()
     cout << "Actual BFS order: ";
     for (int id : actualBfsOrder) cout << id << " ";
     cout << endl;
-    assert(compareVectors(expectedBfsOrder, actualBfsOrder));
+    assert(compareVec(expectedBfsOrder, actualBfsOrder));
     cout << "BFS order is correct." << endl;
 
     cout << endl;
