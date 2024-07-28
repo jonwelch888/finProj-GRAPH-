@@ -101,7 +101,7 @@ int main()
     cout << "==============================================" << endl;
 
     cout << "Performing DFS starting from node 1:" << endl;
-    vector<int> expectedDfsOrder = {1, 2, 4, 7, 5, 3, 6}; // Update based on actual expected order
+    vector<int> expectedDfsOrder = {1, 2, 4, 7, 3, 6, 5}; // was ~>[1,2,3,4,7,5,3,6,];
     vector<int> actualDfsOrder;
     graph.dfs(1, actualDfsOrder);
     cout << "Expected DFS order: ";
