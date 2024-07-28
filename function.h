@@ -12,6 +12,7 @@
 #include <stdexcept>
 #include <stdlib.h> /* rand */
 #include <vector>
+#include <iostream>
 
 const int RUN = 32; // for tSort() natural runs; 
 
