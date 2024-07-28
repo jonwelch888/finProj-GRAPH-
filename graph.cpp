@@ -219,17 +219,16 @@ void Graph::dfs(int startId, vector<int>& order)
             vector<int> neighbors = nodes[nodeId]->getNeighbors();
             tSort(neighbors, neighbors.size());
 
-            for (int neighborId : neighbors)
+            for (auto it = neighbor.rbegin(); it != neighbors.rend(); ++it)
             {
-                if (visited.find(neighborId) == visited.end())
+                if (visited.find(*it) == visited.end())
                 {
-                    stack.push(neighborId);
+                    stack.push(*it);
                 }
             }
         }
     }
 }
-
 
 void Graph::bfs(int startId, vector<int>& order)
 {
