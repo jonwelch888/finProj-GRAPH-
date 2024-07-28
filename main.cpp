@@ -110,7 +110,7 @@ int main()
     cout << "Actual DFS order: ";
     for (int id : actualDfsOrder) cout << id << " ";
     cout << endl;
-    assert(compareVec(expectedDfsOrder, actualDfsOrder));
+    assert(compareVec(expectedDfsOrder, actualDfsOrder));//[113]:error here;
     cout << "DFS order is correct." << endl;
 
     cout << endl;
