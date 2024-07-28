@@ -219,7 +219,7 @@ void Graph::dfs(int startId, vector<int>& order)
             vector<int> neighbors = nodes[nodeId]->getNeighbors();
             tSort(neighbors, neighbors.size());
 
-            for (auto it = neighbor.rbegin(); it != neighbors.rend(); ++it)
+            for (auto it = neighbors.rbegin(); it != neighbors.rend(); ++it)
             {
                 if (visited.find(*it) == visited.end())
                 {
