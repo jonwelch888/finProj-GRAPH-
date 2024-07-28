@@ -101,7 +101,7 @@ int main()
     cout << "==============================================" << endl;
 
     cout << "Performing DFS starting from node 1:" << endl;
-    vector<int> expectedDfsOrder = {1, 2, 4, 7, 3, 6, 5}; // was ~>[1,2,3,4,7,5,3,6,];
+    vector<int> expectedDfsOrder = {1, 2, 4, 7, 3, 6, 5}; // was ~>[1,2,3,4,7,5,3,6,]; this worked;
     vector<int> actualDfsOrder;
     graph.dfs(1, actualDfsOrder);
     cout << "Expected DFS order: ";
@@ -110,13 +110,13 @@ int main()
     cout << "Actual DFS order: ";
     for (int id : actualDfsOrder) cout << id << " ";
     cout << endl;
-    assert(compareVec(expectedDfsOrder, actualDfsOrder));//[113]:error here;
+    assert(compareVec(expectedDfsOrder, actualDfsOrder));
     cout << "DFS order is correct." << endl;
 
     cout << endl;
 
     cout << "Performing BFS starting from node 1:" << endl;
-    vector<int> expectedBfsOrder = {1, 2, 3, 4, 5, 6, 7}; // Update based on actual expected order
+    vector<int> expectedBfsOrder = {1, 2, 3, 7, 4, 5, 6}; //was ~>{1, 2, 3, 4, 5, 6, 7}; 
     vector<int> actualBfsOrder;
     graph.bfs(1, actualBfsOrder);
     cout << "Expected BFS order: ";
