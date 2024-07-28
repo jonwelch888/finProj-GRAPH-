@@ -140,8 +140,7 @@ bool compareVec(const vector<int>& v1, const vector<int>& v2)
     @return : true if vectors are equal, false otherwise
     @Note : [return XYZ ? true : false; OR(^), return XYZ ? A : B ? : C;]
     *********************************************/
-    
-     bool flag = (v1.size() != v2.size()) ? -1 : true;
+    bool flag = (v1.size() != v2.size()) ? -1 : true;
      
     if (flag==true)
     {
@@ -155,8 +154,6 @@ bool compareVec(const vector<int>& v1, const vector<int>& v2)
     }
     return flag;
 }
-
-
 
 int random_range(int min, int max)
 {
