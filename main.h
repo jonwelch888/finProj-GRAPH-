@@ -9,6 +9,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+const int NUMNODES = 7;
+
 #include "graph.h"
 #include "function.h"
 #include <iostream>
