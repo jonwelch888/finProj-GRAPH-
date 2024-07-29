@@ -7,9 +7,6 @@
 * @note This file is associated with [main.h]
 ***********************************************/
 
-//[==========[BT8 SUCCESS!]=============$$$======[ BACKTEST: (FINAL) ]======$$$=====]
-
-
 #include "main.h"
 
 int main()
