@@ -63,17 +63,17 @@ class Node
     Setters/Mutators
     ***********************/
     void addNeighbor(int);
+    bool hasNeighbor(int) const;
 
 };
 
 class Graph
 {
     /*********************************************
-    * This class defines a Graph. It represents an undirected, unweighted graph.
-    * The class has methods to add nodes, add edges, check for cycles, and perform
-    * depth-first and breadth-first searches.
-    *
-    * @attrib nodes : map of node ids to Node pointers
+    This class defines a Graph. It represents an undirected, unweighted graph.
+    The class has methods to add nodes, add edges, check for cycles, and perform
+    depth-first and breadth-first searches.
+    @attrib nodes : map of node ids to Node pointers
     *********************************************/
     private:
     unordered_map<int, Node*> nodes;
@@ -104,6 +104,7 @@ class Graph
     bool hasCycle();
     void dfs(int, vector<int>&);
     void bfs(int, vector<int>&);
+    bool hasEdge(int, int) const; 
 
 };
 
