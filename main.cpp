@@ -7,10 +7,7 @@
 * @note This file is associated with [main.h]
 ***********************************************/
 
-//[==========[BT6 NOT SUCCESS]=============$$$======[ BACKTEST: (7) ]======$$$=====]
-//Change the expected output and got the error to go away :)
-//Attempting to create random edges
-// created 2 scopes 
+//[==========[BT7 SUCCESS!]===2-scopes===$$$======[ BACKTEST: (8) ]======$$$=====]
 
 
 #include "main.h"
@@ -243,6 +240,55 @@ int main()
 
         cout << "DFS and BFS traversals on random graph are valid." << endl;
     }
+    //trying extra test 
+    // [Scope 3]Additional edge cases
+    {
+        Graph graph;
+        cout << endl << "Additional Edge Cases" << endl << endl;
 
+        // Test duplicate edges
+        graph.addNode(1, "Node 1");
+        graph.addNode(2, "Node 2");
+        graph.addEdge(1, 2);
+        graph.addEdge(1, 2);  // Duplicate edge
+
+        // Test isolated nodes
+        graph.addNode(3, "Node 3");
+        vector<int> isolatedNodeDfsOrder;
+        graph.dfs(3, isolatedNodeDfsOrder);
+        assert(isolatedNodeDfsOrder.size() == 1 && isolatedNodeDfsOrder[0] == 3);
+        vector<int> isolatedNodeBfsOrder;
+        graph.bfs(3, isolatedNodeBfsOrder);
+        assert(isolatedNodeBfsOrder.size() == 1 && isolatedNodeBfsOrder[0] == 3);
+
+        cout << "Duplicate edges and isolated nodes handled correctly." << endl;
+    }
+
+    //[Scope 4] Performance test with a large graph
+    {
+        const int LARGE_NUM_NODES = 1000;
+        Graph largeGraph;
+        cout << endl << "Performance Test with Large Graph" << endl << endl;
+
+        for (int i = 1; i <= LARGE_NUM_NODES; ++i)
+        {
+            largeGraph.addNode(i, "Node " + std::to_string(i));
+        }
+
+        for (int i = 1; i < LARGE_NUM_NODES; ++i)
+        {
+            largeGraph.addEdge(i, i + 1);
+        }
+
+        vector<int> largeGraphDfsOrder;
+        largeGraph.dfs(1, largeGraphDfsOrder);
+        assert(largeGraphDfsOrder.size() == LARGE_NUM_NODES);
+
+        vector<int> largeGraphBfsOrder;
+        largeGraph.bfs(1, largeGraphBfsOrder);
+        assert(largeGraphBfsOrder.size() == LARGE_NUM_NODES);
+
+        cout << "Large graph handled correctly." << endl;
+    }
     return 0;
 }
