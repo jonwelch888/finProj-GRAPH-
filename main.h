@@ -10,6 +10,7 @@
 #define MAIN_H
 
 #define NUMNODES 7
+#define LARGE_NUM_NODES = 1000;
 
 #include "graph.h"
 #include "function.h"
