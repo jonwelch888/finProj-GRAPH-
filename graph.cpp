@@ -1,11 +1,11 @@
 /*********************************************
-* Name: Jon Welch
-* Assignment: Final Project
-* Purpose of the file: This source file contains the implementation of the Node and Graph classes.
-* It handles operations such as adding nodes, adding edges, detecting cycles,
-* and performing DFS and BFS.
-*
-* @note This file is associated with [graph.h]
+Name: Jon Welch
+Assignment: Final Project
+Purpose of the file: This source file contains the implementation of the Node and Graph classes.
+It handles operations such as adding nodes, adding edges, detecting cycles,
+and performing DFS and BFS.
+
+@note This file is associated with [graph.h]
 *********************************************/
 
 #include "graph.h"
@@ -13,26 +13,26 @@
 Node::Node(int id, const string& data) : id(id), data(data)
 {
     /*********************************************
-    * Constructor to initialize the Node with given id and data.
-    *
-    * @param id : unique identifier for the node
-    * @param data : data associated with the node
+    Constructor to initialize the Node with given id and data.
+    
+    @param id : unique identifier for the node
+    @param data : data associated with the node
     *********************************************/
 }
 
 Node::~Node()
 {
     /*********************************************
-    * Destructor for Node class.
-    * Currently no dynamic memory to clean up.
+    Destructor for Node class.
+    Currently no dynamic memory to clean up.
     *********************************************/
 }
 
 int Node::getId() const
 {
     /*********************************************
-    * getId: Returns the id of the node.
-    * @return : id of the node
+    getId: Returns the id of the node.
+    @return : id of the node
     *********************************************/
     return id;
 }
@@ -40,8 +40,8 @@ int Node::getId() const
 string Node::getData() const
 {
     /*********************************************
-    * getData: Returns the data of the node.
-    * @return : data of the node
+    getData: Returns the data of the node.
+    @return : data of the node
     *********************************************/
     return data;
 }
@@ -49,8 +49,8 @@ string Node::getData() const
 const vector<int>& Node::getNeighbors() const
 {
     /*********************************************
-    * getNeighbors: Returns a const reference to the neighbors vector.
-    * @return : const reference to the neighbors vector
+    getNeighbors: Returns a const reference to the neighbors vector.
+    @return : const reference to the neighbors vector
     *********************************************/
     return neighbors;
 }
@@ -58,16 +58,26 @@ const vector<int>& Node::getNeighbors() const
 void Node::addNeighbor(int neighborId)
 {
     /*********************************************
-    * addNeighbor: Adds a neighbor to the node.
-    * @param neighborId : id of the neighbor node to add
+    addNeighbor: Adds a neighbor to the node.
+    @param neighborId : id of the neighbor node to add
     *********************************************/
     neighbors.push_back(neighborId);
+}
+
+bool Node::hasNeighbor(int neighborId) const
+{
+    /*********************************************
+    hasNeighbor: Checks if the node has a specific neighbor.
+    @param neighborId : id of the neighbor node to check
+    @return : true if neighborId is found, false otherwise
+    *********************************************/
+    return std::find(neighbors.begin(), neighbors.end(), neighborId) != neighbors.end();
 }
 
 Graph::Graph()
 {
     /*********************************************
-    * Constructor to initialize an empty graph.
+    Constructor to initialize an empty graph.
     *********************************************/
 }
 
@@ -98,10 +108,10 @@ void Graph::addNode(int id, const string& data)
 void Graph::addEdge(int id1, int id2)
 {
     /*********************************************
-    * addEdge: Adds an edge between two nodes in the graph.
-    * @param id1 : id of the first node
-    * @param id2 : id of the second node
-    * @throws : std::invalid_argument if either id1 or id2 does not exist
+    addEdge: Adds an edge between two nodes in the graph.
+    @param id1 : id of the first node
+    @param id2 : id of the second node
+    @throws : std::invalid_argument if either id1 or id2 does not exist
     *********************************************/
     if (nodes.find(id1) == nodes.end() || nodes.find(id2) == nodes.end())
     {
@@ -111,12 +121,24 @@ void Graph::addEdge(int id1, int id2)
     nodes[id2]->addNeighbor(id1);
 }
 
+bool Graph::hasEdge(int id1, int id2) const
+{
+    /*********************************************
+    * hasEdge: Checks if there is an edge between two nodes.
+    * @param id1 : id of the first node
+    * @param id2 : id of the second node
+    * @return : true if there is an edge between id1 and id2, false otherwise
+    *********************************************/
+    return (nodes.find(id1) == nodes.end() || nodes.find(id2) == nodes.end()) ? false : nodes.at(id1)->hasNeighbor(id2);
+ 
+}
+
 Node* Graph::getNode(int id)
 {
     /*********************************************
-    * getNode: Returns a pointer to the node with the given id.
-    * @param id : id of the node to retrieve
-    * @return : pointer to the node, or nullptr if not found
+    getNode: Returns a pointer to the node with the given id.
+    @param id : id of the node to retrieve
+    @return : pointer to the node, or nullptr if not found
     *********************************************/
     return (nodes.find(id) != nodes.end()) ? nodes[id] : nullptr;
 }
@@ -138,11 +160,11 @@ vector<Node*> Graph::getNodes() const
 bool Graph::hasCycleUtil(int nodeId, unordered_set<int>& visited, int parentId)
 {
     /*********************************************
-    * hasCycleUtil: Utility function to detect cycle in the graph.
-    * @param nodeId : id of the current node
-    * @param visited : set of visited nodes
-    * @param parentId : id of the parent node
-    * @return : true if a cycle is detected, false otherwise
+    hasCycleUtil: Utility function to detect cycle in the graph.
+    @param nodeId : id of the current node
+    @param visited : set of visited nodes
+    @param parentId : id of the parent node
+    @return : true if a cycle is detected, false otherwise
     *********************************************/
     visited.insert(nodeId);
     bool hasCycle = false;
@@ -167,8 +189,8 @@ bool Graph::hasCycleUtil(int nodeId, unordered_set<int>& visited, int parentId)
 bool Graph::hasCycle()
 {
     /*********************************************
-    * hasCycle: Checks if the graph contains a cycle.
-    * @return : true if a cycle is detected, false otherwise
+    hasCycle: Checks if the graph contains a cycle.
+    @return : true if a cycle is detected, false otherwise
     *********************************************/
     unordered_set<int> visited;
     bool hasCycle = false;
