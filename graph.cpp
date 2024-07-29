@@ -1,11 +1,11 @@
 /*********************************************
-Name: Jon Welch
-Assignment: Final Project
-Purpose of the file: This source file contains the implementation of the Node and Graph classes.
-It handles operations such as adding nodes, adding edges, detecting cycles,
-and performing DFS and BFS.
-
-@note This file is associated with [graph.h]
+* Name: Jon Welch
+* Assignment: Final Project
+* Purpose of the file: This source file contains the implementation of the Node and Graph classes.
+* It handles operations such as adding nodes, adding edges, detecting cycles,
+* and performing DFS and BFS.
+* 
+* @note This file is associated with [graph.h]
 *********************************************/
 
 #include "graph.h"
@@ -124,10 +124,10 @@ void Graph::addEdge(int id1, int id2)
 bool Graph::hasEdge(int id1, int id2) const
 {
     /*********************************************
-    * hasEdge: Checks if there is an edge between two nodes.
-    * @param id1 : id of the first node
-    * @param id2 : id of the second node
-    * @return : true if there is an edge between id1 and id2, false otherwise
+    hasEdge: Checks if there is an edge between two nodes.
+    @param id1 : id of the first node
+    @param id2 : id of the second node
+    @return : true if there is an edge between id1 and id2, false otherwise
     *********************************************/
     return (nodes.find(id1) == nodes.end() || nodes.find(id2) == nodes.end()) ? false : nodes.at(id1)->hasNeighbor(id2);
  
@@ -146,8 +146,8 @@ Node* Graph::getNode(int id)
 vector<Node*> Graph::getNodes() const
 {
     /*********************************************
-    * getNodes: Returns a vector of all nodes in the graph.
-    * @return : vector of all nodes
+    getNodes: Returns a vector of all nodes in the graph.
+    @return : vector of all nodes
     *********************************************/
     vector<Node*> result;
     for (const auto& pair : nodes)
@@ -235,8 +235,6 @@ void Graph::dfs(int startId, vector<int>& order)
         {
             visited.insert(nodeId);
             order.push_back(nodeId);
-            cout << "Visited node " << nodeId << endl;
-
             //neighbors and sort them using tSort
             vector<int> neighbors = nodes[nodeId]->getNeighbors();
             tSort(neighbors, neighbors.size());
@@ -277,8 +275,6 @@ void Graph::bfs(int startId, vector<int>& order)
         {
             visited.insert(nodeId);
             order.push_back(nodeId); //store order
-            cout << "Visited node " << nodeId << endl;
-            
             //sort neighbors to ensure const order
             vector<int> neighbors = nodes[nodeId]->getNeighbors(); 
             tSort(neighbors, neighbors.size()); 
