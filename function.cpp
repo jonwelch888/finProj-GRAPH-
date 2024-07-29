@@ -152,7 +152,6 @@ bool compareVec(const vector<int>& v1, const vector<int>& v2)
             }
         }
     }
-    //debug prints
     if (!flag)
     {
         cout << "Vectors do not match!" << endl;
@@ -163,7 +162,6 @@ bool compareVec(const vector<int>& v1, const vector<int>& v2)
         for (int val : v2) cout << val << " ";
         cout << endl;
     }
-
     return flag;
 }
 
