@@ -21,7 +21,7 @@ int main()
     5. Ensures that all operations are functioning correctly using assertions.
     
     @return 0 : Indicates successful execution of the program.
-    @note : More than one scope, 2 in total; 
+    @note : More than one scope, 4 in total; 
     *********************************************/
 
     srand(static_cast<unsigned int>(time(0)));
