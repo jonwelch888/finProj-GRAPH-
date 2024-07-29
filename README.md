@@ -1,4 +1,4 @@
-# Final Project
+# Final Project: Graphs 
 
 ## Overview
 This project involves the implementation of a graph data structure in C++. It supports basic graph operations such as adding nodes and edges, 
