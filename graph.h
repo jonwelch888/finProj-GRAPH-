@@ -10,6 +10,8 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
+#define LARGE_NUM_NODES = 1000
+
 #include <stack>
 #include <queue>
 #include <iostream>
