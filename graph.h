@@ -33,12 +33,12 @@ using std::endl;
 class Node
 {
     /*********************************************
-    * This class defines a Node. It represents a node in an undirected graph.
-    * The class has methods to access and update node data and neighbors.
-    *
-    * @attrib id : unique identifier for the node
-    * @attrib data : data associated with the node
-    * @attrib neighbors : list of neighbor node ids
+    This class defines a Node. It represents a node in an undirected graph.
+    The class has methods to access and update node data and neighbors.
+    
+    @attrib id : unique identifier for the node
+    @attrib data : data associated with the node
+    @attrib neighbors : list of neighbor node ids
     *********************************************/
     private:
     int id;
