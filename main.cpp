@@ -7,7 +7,7 @@
 * @note This file is associated with [main.h]
 ***********************************************/
 
-//[==========[BT7 SUCCESS!]===2-scopes===$$$======[ BACKTEST: (8) ]======$$$=====]
+//[==========[BT8 SUCCESS!]=============$$$======[ BACKTEST: (FINAL) ]======$$$=====]
 
 
 #include "main.h"
@@ -240,7 +240,6 @@ int main()
 
         cout << "DFS and BFS traversals on random graph are valid." << endl;
     }
-    //trying extra test 
     // [Scope 3]Additional edge cases
     {
         Graph graph;
@@ -266,7 +265,6 @@ int main()
 
     //[Scope 4] Performance test with a large graph
     {
-        const int LARGE_NUM_NODES = 1000;
         Graph largeGraph;
         cout << endl << "Performance Test with Large Graph" << endl << endl;
 
