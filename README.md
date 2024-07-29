@@ -2,8 +2,7 @@
 
 ## Overview
 This project involves the implementation of a graph data structure in C++. It supports basic graph operations such as adding nodes and edges, 
-cycle detection, and performing depth-first search (DFS) and breadth-first search (BFS). The project includes comprehensive testing to ensure 
-robustness and correctness.
+cycle detection, and performing depth-first search (DFS) and breadth-first search (BFS).
 
 ## Features
 - **Graph Operations**: Add nodes, add edges, retrieve nodes, and retrieve all nodes.
