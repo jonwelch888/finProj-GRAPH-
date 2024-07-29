@@ -9,7 +9,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#define NUMNODES 7;
+#define NUMNODES 7
 
 #include "graph.h"
 #include "function.h"
