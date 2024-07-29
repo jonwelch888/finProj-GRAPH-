@@ -32,7 +32,7 @@ int main()
         cout << endl << "Graph created" << endl << endl;
 
         /*********************************************
-        * Testing addNode and addEdge methods
+        Testing addNode and addEdge methods
         *********************************************/
         cout << "Testing addNode() and addEdge()" << endl;
         cout << "==============================================" << endl;
@@ -57,7 +57,7 @@ int main()
         cout << endl;
 
         /*********************************************
-        * Testing getNode and getNodes methods
+        Testing getNode and getNodes methods
         *********************************************/
         cout << "Testing getNode() and getNodes()" << endl;
         cout << "==============================================" << endl;
@@ -79,7 +79,7 @@ int main()
         cout << endl;
 
         /*********************************************
-        * Testing hasCycle method
+        Testing hasCycle method
         *********************************************/
         cout << "Testing hasCycle()" << endl;
         cout << "==============================================" << endl;
@@ -95,7 +95,7 @@ int main()
         cout << endl;
 
         /*********************************************
-        * Testing DFS and BFS methods
+        Testing DFS and BFS methods
         *********************************************/
         cout << "Testing DFS and BFS" << endl;
         cout << "==============================================" << endl;
@@ -131,7 +131,7 @@ int main()
         cout << endl;
 
         /*********************************************
-        * Additional Testing for Edge Cases
+        Additional Testing for Edge Cases
         *********************************************/
         cout << "Testing Edge Cases" << endl;
         cout << "==============================================" << endl;
@@ -190,10 +190,8 @@ int main()
                 cout << "Added edge between " << id1 << " and " << id2 << endl;
             }
         }
-
-        // Ensure the graph is fully connected
         /*********************************************
-        * Fix: Ensure all nodes are connected
+        Ensure all nodes are connected
         *********************************************/
         for (int i = 1; i < NUMNODES; i++)
         {
@@ -210,7 +208,7 @@ int main()
         cout << endl;
 
         /*********************************************
-        * Testing DFS and BFS methods
+        Testing DFS and BFS methods
         *********************************************/
         cout << "Testing DFS and BFS on Random Graph" << endl;
         cout << "==============================================" << endl;
