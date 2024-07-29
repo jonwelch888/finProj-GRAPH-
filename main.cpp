@@ -7,9 +7,12 @@
 * @note This file is associated with [main.h]
 ***********************************************/
 
-//[==========[BT5 SUCCESS!]=============$$$======[ BACKTEST: (6) ]======$$$=====]
+//[==========[BT6 NOT SUCCESS]=============$$$======[ BACKTEST: (7) ]======$$$=====]
 //Change the expected output and got the error to go away :)
 //Attempting to create random edges
+// created 2 scopes 
+
+
 #include "main.h"
 
 int main()
@@ -24,155 +27,206 @@ int main()
     5. Ensures that all operations are functioning correctly using assertions.
     
     @return 0 : Indicates successful execution of the program.
+    @note : More than one scope, 2 in total; 
     *********************************************/
-    
+
     srand(static_cast<unsigned int>(time(0)));
-    
-    Graph graph;
-    cout << endl << "Graph created" << endl << endl;
 
-    /*********************************************
-    * Testing addNode and addEdge methods
-    *********************************************/
-    cout << "Testing addNode() and addEdge()" << endl;
-    cout << "==============================================" << endl;
-
-    for (int i = 1; i <= NUMNODES; i++)
+    //[Scope 1] Tests
     {
-        string nodeData = "Node " + std::to_string(i);
-        graph.addNode(i, nodeData);
-        cout << "Added node " << i << " with data: " << nodeData << endl;
-    }
+        Graph graph;
+        cout << endl << "Graph created" << endl << endl;
 
-    //Adding random edges
-    for (int i = 0; i < (NUMNODES - 1); i++)
-    {
-        int id1 = random_range(1, NUMNODES);
-        int id2 = random_range(1, NUMNODES);
-        if (id1 != id2)
+        /*********************************************
+        * Testing addNode and addEdge methods
+        *********************************************/
+        cout << "Testing addNode() and addEdge()" << endl;
+        cout << "==============================================" << endl;
+
+        int ids1[7] = {1, 2, 3, 4, 5, 6, 7};
+        string strings1[7] = {"Node 1", "Node 2", "Node 3", "Node 4", "Node 5", "Node 6", "Node 7"};
+
+        for (int i = 0; i < 7; i++)
         {
-            graph.addEdge(id1, id2);
-            cout << "Added edge between " << id1 << " and " << id2 << endl;
+            graph.addNode(ids1[i], strings1[i]);
+            cout << "Added node " << ids1[i] << " with data: " << strings1[i] << endl;
+        }
+
+        int edges[7][2] = {{1, 2}, {1, 3}, {2, 4}, {2, 5}, {3, 6}, {3, 7}, {4, 7}};
+
+        for (int i = 0; i < 7; i++)
+        {
+            graph.addEdge(edges[i][0], edges[i][1]);
+            cout << "Added edge between " << edges[i][0] << " and " << edges[i][1] << endl;
+        }
+
+        cout << endl;
+
+        /*********************************************
+        * Testing getNode and getNodes methods
+        *********************************************/
+        cout << "Testing getNode() and getNodes()" << endl;
+        cout << "==============================================" << endl;
+
+        for (int i = 0; i < 7; i++)
+        {
+            Node* node = graph.getNode(ids1[i]);
+            assert(node != nullptr);
+            cout << "Retrieved node " << node->getId() << " with data: " << node->getData() << endl;
+        }
+
+        vector<Node*> allNodes = graph.getNodes();
+        cout << "All nodes in the graph:" << endl;
+        for (Node* node : allNodes)
+        {
+            cout << "Node " << node->getId() << " with data: " << node->getData() << endl;
+        }
+
+        cout << endl;
+
+        /*********************************************
+        * Testing hasCycle method
+        *********************************************/
+        cout << "Testing hasCycle()" << endl;
+        cout << "==============================================" << endl;
+
+        bool cycle = graph.hasCycle();
+        cout << "Cycle detected: " << (cycle ? "Yes" : "No") << endl;
+
+        cout << "Adding an edge to create a cycle between node 7 and node 1" << endl;
+        graph.addEdge(7, 1);
+        cycle = graph.hasCycle();
+        cout << "Cycle detected: " << (cycle ? "Yes" : "No") << endl;
+
+        cout << endl;
+
+        /*********************************************
+        * Testing DFS and BFS methods
+        *********************************************/
+        cout << "Testing DFS and BFS" << endl;
+        cout << "==============================================" << endl;
+
+        cout << "Performing DFS starting from node 1:" << endl;
+        vector<int> expectedDfsOrder = {1, 2, 4, 7, 3, 6, 5};
+        vector<int> actualDfsOrder;
+        graph.dfs(1, actualDfsOrder);
+        cout << "Expected DFS order: ";
+        for (int id : expectedDfsOrder) cout << id << " ";
+        cout << endl;
+        cout << "Actual DFS order: ";
+        for (int id : actualDfsOrder) cout << id << " ";
+        cout << endl;
+        assert(compareVec(expectedDfsOrder, actualDfsOrder));
+        cout << "DFS order is correct." << endl;
+
+        cout << endl;
+
+        cout << "Performing BFS starting from node 1:" << endl;
+        vector<int> expectedBfsOrder = {1, 2, 3, 7, 4, 5, 6};
+        vector<int> actualBfsOrder;
+        graph.bfs(1, actualBfsOrder);
+        cout << "Expected BFS order: ";
+        for (int id : expectedBfsOrder) cout << id << " ";
+        cout << endl;
+        cout << "Actual BFS order: ";
+        for (int id : actualBfsOrder) cout << id << " ";
+        cout << endl;
+        assert(compareVec(expectedBfsOrder, actualBfsOrder));
+        cout << "BFS order is correct." << endl;
+
+        cout << endl;
+
+        /*********************************************
+        * Additional Testing for Edge Cases
+        *********************************************/
+        cout << "Testing Edge Cases" << endl;
+        cout << "==============================================" << endl;
+
+        // Testing self-loop
+        cout << "Testing self-loop on node 1" << endl;
+        try 
+        {
+            graph.addEdge(1, 1);
+            cout << "Added self-loop on node 1" << endl;
+        } 
+        catch (const std::invalid_argument& e) 
+        {
+            cout << "Error: " << e.what() << endl;
+        }
+
+        // Testing disconnected node
+        cout << "Testing disconnected node" << endl;
+        graph.addNode(8, "Node 8");
+        Node* node8 = graph.getNode(8);
+        assert(node8 != nullptr);
+        cout << "Added and retrieved disconnected node " << node8->getId() << " with data: " << node8->getData() << endl;
+
+        // Testing edge between non-existent nodes 9 and 10
+        cout << "Testing edge between non-existent nodes 9 and 10" << endl;
+        try 
+        {
+            graph.addEdge(9, 10);
+        } 
+        catch (const std::invalid_argument& e) 
+        {
+            cout << "Error: " << e.what() << endl;
         }
     }
 
-    cout << endl;
-
-    /*********************************************
-    * Testing getNode and getNodes methods
-    *********************************************/
-    cout << "Testing getNode() and getNodes()" << endl;
-    cout << "==============================================" << endl;
-
-    for (int i = 1; i <= NUMNODES; i++)
+    //[Scope 2] Tests
     {
-        Node* node = graph.getNode(i);
-        assert(node != nullptr);
-        cout << "Retrieved node " << node->getId() << " with data: " << node->getData() << endl;
-    }
+        Graph graph;
+        cout << endl << "Random Graph created" << endl << endl;
 
-    vector<Node*> allNodes = graph.getNodes();
-    cout << "All nodes in the graph:" << endl;
-    for (Node* node : allNodes)
-    {
-        cout << "Node " << node->getId() << " with data: " << node->getData() << endl;
-    }
+        for (int i = 1; i <= NUMNODES; i++)
+        {
+            string nodeData = "Node " + std::to_string(i);
+            graph.addNode(i, NUMNODES);
+            cout << "Added node " << i << " with data: " << nodeData << endl;
+        }
 
-    cout << endl;
+        //adding random edges
+        for (int i = 0; i < (NUMNODES - 1); i++)
+        {
+            int id1 = random_range(1, NUMNODES);
+            int id2 = random_range(1, NUMNODES);
+            if (id1 != id2)
+            {
+                graph.addEdge(id1, id2);
+                cout << "Added edge between " << id1 << " and " << id2 << endl;
+            }
+        }
 
-    /*********************************************
-    * Testing hasCycle method
-    *********************************************/
-    cout << "Testing hasCycle()" << endl;
-    cout << "==============================================" << endl;
+        cout << endl;
 
-    bool cycle = graph.hasCycle();
-    cout << "Cycle detected: " << (cycle ? "Yes" : "No") << endl;
+        /*********************************************
+        * Testing DFS and BFS methods
+        *********************************************/
+        cout << "Testing DFS and BFS on Random Graph" << endl;
+        cout << "==============================================" << endl;
 
-    cout << "Adding an edge to create a cycle between node 7 and node 1" << endl;
-    graph.addEdge(7, 1);
-    cycle = graph.hasCycle();
-    cout << "Cycle detected: " << (cycle ? "Yes" : "No") << endl;
+        cout << "Performing DFS starting from node 1:" << endl;
+        vector<int> actualDfsOrder;
+        graph.dfs(1, actualDfsOrder);
+        cout << "DFS order: ";
+        for (int id : actualDfsOrder) cout << id << " ";
+        cout << endl;
 
-    cout << endl;
+        cout << "Performing BFS starting from node 1:" << endl;
+        vector<int> actualBfsOrder;
+        graph.bfs(1, actualBfsOrder);
+        cout << "BFS order: ";
+        for (int id : actualBfsOrder) cout << id << " ";
+        cout << endl;
 
-    /*********************************************
-    * Testing DFS and BFS methods
-    *********************************************/
-    cout << "Testing DFS and BFS" << endl;
-    cout << "==============================================" << endl;
+        //validate traversals
+        assert(!actualDfsOrder.empty() && actualDfsOrder[0] == 1);
+        assert(!actualBfsOrder.empty() && actualBfsOrder[0] == 1);
+        assert(actualDfsOrder.size() == NUMNODES);
+        assert(actualBfsOrder.size() == NUMNODES);
 
-    cout << "Performing DFS starting from node 1:" << endl;
-    vector<int> expectedDfsOrder = {1, 2, 4, 7, 3, 6, 5}; // was ~>[1,2,3,4,7,5,3,6,]; this worked;
-    vector<int> actualDfsOrder;
-    graph.dfs(1, actualDfsOrder);
-    cout << "Expected DFS order: ";
-    for (int id : expectedDfsOrder) cout << id << " ";
-    cout << endl;
-    cout << "Actual DFS order: ";
-    for (int id : actualDfsOrder) cout << id << " ";
-    cout << endl;
-    assert(compareVec(expectedDfsOrder, actualDfsOrder));
-    cout << "DFS order is correct." << endl;
-
-    cout << endl;
-
-    cout << "Performing BFS starting from node 1:" << endl;
-    vector<int> expectedBfsOrder = {1, 2, 3, 7, 4, 5, 6}; //was ~>{1, 2, 3, 4, 5, 6, 7}; 
-    vector<int> actualBfsOrder;
-    graph.bfs(1, actualBfsOrder);
-    cout << "Expected BFS order: ";
-    for (int id : expectedBfsOrder) cout << id << " ";
-    cout << endl;
-    cout << "Actual BFS order: ";
-    for (int id : actualBfsOrder) cout << id << " ";
-    cout << endl;
-    assert(compareVec(expectedBfsOrder, actualBfsOrder));
-    cout << "BFS order is correct." << endl;
-
-    cout << endl;
-
-    /*********************************************
-    * Additional Testing for Edge Cases
-    *********************************************/
-    cout << "Testing Edge Cases" << endl;
-    cout << "==============================================" << endl;
-
-    // Testing self-loop
-    cout << "Testing self-loop on node 1" << endl;
-    try 
-    {
-        graph.addEdge(1, 1);
-        cout << "Added self-loop on node 1" << endl;
-    } 
-    catch (const std::invalid_argument& e) 
-    {
-        cout << "Error: " << e.what() << endl;
-    }
-
-    // Testing disconnected node
-    cout << "Testing disconnected node" << endl;
-    graph.addNode(8, "Node 8");
-    Node* node8 = graph.getNode(8);
-    assert(node8 != nullptr);
-    cout << "Added and retrieved disconnected node " << node8->getId() << " with data: " << node8->getData() << endl;
-
-    // Testing edge between non-existent nodes 9 and 10
-    cout << "Testing edge between non-existent nodes 9 and 10" << endl;
-    try 
-    {
-        graph.addEdge(9, 10);
-    } 
-    catch (const std::invalid_argument& e) 
-    {
-        cout << "Error: " << e.what() << endl;
+        cout << "DFS and BFS traversals on random graph are valid." << endl;
     }
 
     return 0;
 }
-
-
-
-
-
-
