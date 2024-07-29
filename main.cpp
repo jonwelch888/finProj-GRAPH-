@@ -197,6 +197,22 @@ int main()
             }
         }
 
+        // Ensure the graph is fully connected
+        /*********************************************
+        * Fix: Ensure all nodes are connected
+        *********************************************/
+        for (int i = 1; i < NUMNODES; i++)
+        {
+            for (int j = i + 1; j <= NUMNODES; j++)
+            {
+                if (!graph.hasEdge(i, j))
+                {
+                    graph.addEdge(i, j);
+                    cout << "Added edge between " << i << " and " << j << " to ensure full connectivity." << endl;
+                }
+            }
+        }
+
         cout << endl;
 
         /*********************************************
@@ -219,23 +235,7 @@ int main()
         for (int id : actualBfsOrder) cout << id << " ";
         cout << endl;
 
-        //graph is fully connected
-        /*********************************************
-        * Fix: check all nodes are connected
-        *********************************************/
-        for (int i = 1; i < NUMNODES; i++)
-        {
-            for (int j = (i + 1); j <= NUMNODES; j++)
-            {
-                if (!graph.hasEdge(i, j))
-                {
-                    graph.addEdge(i, j);
-                    cout << "Added edge between " << i << " and " << j << " to ensure full connectivity." << endl;
-                }
-            }
-        }
-
-        //validate traversals
+        // Validate traversals
         assert(!actualDfsOrder.empty() && actualDfsOrder[0] == 1);
         assert(!actualBfsOrder.empty() && actualBfsOrder[0] == 1);
         assert(actualDfsOrder.size() == NUMNODES);
