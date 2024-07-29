@@ -7,9 +7,9 @@
 * @note This file is associated with [main.h]
 ***********************************************/
 
-//[======== trying some inverse order logic for dfs  BT5;==BT4[!success]=============$$$======[ BACKTEST: (5) ]======$$$=====]
-
-
+//[==========[BT5 SUCCESS!]=============$$$======[ BACKTEST: (6) ]======$$$=====]
+//Change the expected output and got the error to go away :)
+//Attempting to create random edges
 #include "main.h"
 
 int main()
@@ -37,21 +37,23 @@ int main()
     cout << "Testing addNode() and addEdge()" << endl;
     cout << "==============================================" << endl;
 
-    int ids1[7] = {1, 2, 3, 4, 5, 6, 7};
-    string strings1[7] = {"Node 1", "Node 2", "Node 3", "Node 4", "Node 5", "Node 6", "Node 7"};
-
-    for (int i = 0; i < 7; i++)
+    for (int i = 1; i <= NUMNODES; i++)
     {
-        graph.addNode(ids1[i], strings1[i]);
-        cout << "Added node " << ids1[i] << " with data: " << strings1[i] << endl;
+        string nodeData = "Node " + std::to_string(i);
+        graph.addNode(i, nodeData);
+        cout << "Added node " << i << " with data: " << nodeData << endl;
     }
 
-    int edges[7][2] = {{1, 2}, {1, 3}, {2, 4}, {2, 5}, {3, 6}, {3, 7}, {4, 7}};
-
-    for (int i = 0; i < 7; i++)
+    //Adding random edges
+    for (int i = 0; i < (NUMNODES - 1); i++)
     {
-        graph.addEdge(edges[i][0], edges[i][1]);
-        cout << "Added edge between " << edges[i][0] << " and " << edges[i][1] << endl;
+        int id1 = random_range(1, NUMNODES);
+        int id2 = random_range(1, NUMNODES);
+        if (id1 != id2)
+        {
+            graph.addEdge(id1, id2);
+            cout << "Added edge between " << id1 << " and " << id2 << endl;
+        }
     }
 
     cout << endl;
@@ -62,9 +64,9 @@ int main()
     cout << "Testing getNode() and getNodes()" << endl;
     cout << "==============================================" << endl;
 
-    for (int i = 0; i < 7; i++)
+    for (int i = 1; i <= NUMNODES; i++)
     {
-        Node* node = graph.getNode(ids1[i]);
+        Node* node = graph.getNode(i);
         assert(node != nullptr);
         cout << "Retrieved node " << node->getId() << " with data: " << node->getData() << endl;
     }
