@@ -14,8 +14,6 @@
 #include <vector>
 #include <iostream>
 
-#define RUN = 32; // for tSort() natural runs; 
-
 using std::vector;
 using std::string;
 using std::cout;
